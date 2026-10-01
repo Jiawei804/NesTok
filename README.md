@@ -27,7 +27,7 @@ One-dimensional (1D) variable-length visual tokenizers enable adaptive compressi
 
 ### Download Trained Models
 
-The trained checkpoints are hosted on Hugging Face in [Jiawei804/NesTok](https://huggingface.co/Jiawei804/NesTok). Place the downloaded checkpoints in the local `weights/` directory, preserving the filenames.
+The trained checkpoints are hosted on Hugging Face in  🤗 [NesTok](https://huggingface.co/Jiawei804/NesTok). Place the downloaded checkpoints in the local `weights/` directory, preserving the filenames.
 
 | AR Model | Checkpoint | FID | IS | #Params |
 |-----------|---------|---------|-------|---------|
@@ -110,7 +110,12 @@ A large portion of codes in this repo is based on [One-D-Piece](https://github.c
 If you use our code for your paper, please cite:
 
 ```bibtex
-
+@article{zhang2026nestok,
+      title={NesTok: Nested Self-Aligned 1D Tokenizer for Autoregressive Image Generation}, 
+      author={Jiawei Zhang and Shuhao Liu and Rong Huang and Yuancheng Li and Zhihui Li and Xiaojun Chang and Changlin Li},
+      journal={arXiv preprint arXiv:2609.36756},
+      year={2026}
+}
 ```
 
 ## License
