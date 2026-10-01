@@ -12,7 +12,7 @@ Authors: Jiawei Zhang, Shuhao Liu, Rong Huang, Yuancheng Li, Zhihui Li, Xiaojun 
 
 
 ## Abstract <a name="2"></a> 
-One-dimensional (1D) variable-length visual tokenizers enable adaptive compression by varying the number of tokens, allowing downstream autoregressive (AR) models to flexibly trade off generation quality against computational cost using a single tokenizer. However, existing approaches based on nested dropout often fail to fully exploit the representational capacity of the tokenizer, resulting in suboptimal performance in both image reconstruction and generation. In this work, we introduce NesTok, a nested self-alignment framework tailored to dynamic visual tokenizers. NesTok introduces cross-length training, which jointly optimizes reconstruction across token lengths while using the full-length sequence to guide shorter counterparts, enabling shorter token sequences to approach the reconstruction quality of full-length sequences. On ImageNet, NesTok improves substantially over standard training and achieves an rFID score of 0.98. On downstream image generation, it achieves the state-of-the-art gFID score of \textbf{1.46} on ImageNet 256$\times$256 among existing variable-length autoregressive image generation methods.
+One-dimensional (1D) variable-length visual tokenizers enable adaptive compression by varying the number of tokens, allowing downstream autoregressive (AR) models to flexibly trade off generation quality against computational cost using a single tokenizer. However, existing approaches based on nested dropout often fail to fully exploit the representational capacity of the tokenizer, resulting in suboptimal performance in both image reconstruction and generation. In this work, we introduce NesTok, a nested self-alignment framework tailored to dynamic visual tokenizers. NesTok introduces cross-length training, which jointly optimizes reconstruction across token lengths while using the full-length sequence to guide shorter counterparts, enabling shorter token sequences to approach the reconstruction quality of full-length sequences. On ImageNet, NesTok improves substantially over standard training and achieves an rFID score of 0.98. On downstream image generation, it achieves the state-of-the-art gFID score of $\textbf{1.46}$ on ImageNet 256 $\times$ 256 among existing variable-length autoregressive image generation methods.
 
 
 <p align="center">
@@ -31,9 +31,9 @@ The trained checkpoints are hosted on Hugging Face in [Jiawei804/NesTok](https:/
 
 | AR Model | Checkpoint | FID | IS | #Params |
 |-----------|---------|---------|-------|---------|
-| NesTok-B | [NesTok-b.bin](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-b.bin) | 1.73 | 250.5 | 177M |
-| NesTok-L | [NesTok-l.bin](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-l.bin) | 1.50 | 278.9 | 318M |
-| NesTok-XL | [NesTok-xl.bin](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-xl.bin) | 1.46 | 295.9 | 662M |
+| NesTok-B | [NesTok-b](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-b.bin) | 1.73 | 250.5 | 177M |
+| NesTok-L | [NesTok-l](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-l.bin) | 1.50 | 278.9 | 318M |
+| NesTok-XL | [NesTok-xl](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-xl.bin) | 1.46 | 295.9 | 662M |
 
 All AR models use the tokenizer checkpoint [NesTok](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok.pth).
 
@@ -82,10 +82,10 @@ python	calculate_metrics.py \
 	--orig_dir "./samples/real_samples" \
 ```
 
-### Training Tokenizer
+<!-- ## Training Tokenizer
 Please refer to [train_tokenizer/README_NesTok.md](train_tokenizer/README_NesTok.md).
 
-### Training Autoregressive Models
+## Training Autoregressive Models
 Pretokenize the dataset
 ```bash  
 torchrun --nnodes=1 --nproc_per_node=8 --node_rank=0 pretokenization.py \
@@ -100,7 +100,7 @@ Reproduce NesTok-B (400 epochs, total 250k steps)
 accelerate launch --num_machines=1 --num_processes=8 train_ar.py \
     config=configs/NesTok_b.yaml  \
     experiment.output_dir="results/NesTok_b" \
-```
+``` -->
 
 ## Acknowledgements
 A large portion of codes in this repo is based on [One-D-Piece](https://github.com/turingmotors/One-D-Piece), [AliTok](https://github.com/ali-vilab/alitok), [MAR](https://github.com/LTH14/mar). We are grateful for these open-source research projects.
