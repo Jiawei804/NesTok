@@ -82,25 +82,7 @@ python	calculate_metrics.py \
 	--orig_dir "./samples/real_samples" \
 ```
 
-<!-- ## Training Tokenizer
-Please refer to [train_tokenizer/README_NesTok.md](train_tokenizer/README_NesTok.md).
 
-## Training Autoregressive Models
-Pretokenize the dataset
-```bash  
-torchrun --nnodes=1 --nproc_per_node=8 --node_rank=0 pretokenization.py \
---img_size 256 \
---batch_size 32 \
---ten_crop \
---data_path ${PATH_TO_IMAGENET} \
-```
-
-Reproduce NesTok-B (400 epochs, total 250k steps)
-```bash  
-accelerate launch --num_machines=1 --num_processes=8 train_ar.py \
-    config=configs/NesTok_b.yaml  \
-    experiment.output_dir="results/NesTok_b" \
-``` -->
 
 ## Acknowledgements
 A large portion of codes in this repo is based on [One-D-Piece](https://github.com/turingmotors/One-D-Piece), [AliTok](https://github.com/ali-vilab/alitok), [MAR](https://github.com/LTH14/mar). We are grateful for these open-source research projects.

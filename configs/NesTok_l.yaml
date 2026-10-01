@@ -29,7 +29,7 @@ model:
         attn_drop: 0.1
         tok_dropout: 0.1
         class_label_dropout: 0.1
-        image_seq_len:  32 
+        image_seq_len:  256 
         condition_num_classes: 1000
 
         # sampling hyper-params
@@ -43,7 +43,7 @@ model:
 dataset:
     params:
         # use pretokenized dataset for speed-up
-        pretokenization:  'imagenet_cache_one-d-piece' 
+        pretokenization:  'imagenet_cache_NesTok_l' 
         num_workers_per_gpu: 12
     preprocessing:
         resize_shorter_edge: 256

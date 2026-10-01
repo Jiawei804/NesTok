@@ -43,7 +43,7 @@ model:
 dataset:
     params:
         # use pretokenized dataset for speed-up
-        pretokenization:  'imagenet_cache_NesTok' 
+        pretokenization:  'imagenet_cache_NesTok_b' 
         num_workers_per_gpu: 12
     preprocessing:
         resize_shorter_edge: 256

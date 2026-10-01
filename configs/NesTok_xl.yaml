@@ -33,8 +33,8 @@ model:
         condition_num_classes: 1000
 
         # sampling hyper-params
-        randomize_temperature: 0.95
-        guidance_scale: 0.0
+        randomize_temperature: 1.0
+        guidance_scale: 12.0
         guidance_scale_pow: 1.4
         use_checkpoint: False # True to save memory 
         seed: 2
@@ -43,7 +43,7 @@ model:
 dataset:
     params:
         # use pretokenized dataset for speed-up
-        pretokenization:  'imagenet_cache_one-d-piece' 
+        pretokenization:  'imagenet_cache_NesTok_xl' 
         num_workers_per_gpu: 12
     preprocessing:
         resize_shorter_edge: 256
