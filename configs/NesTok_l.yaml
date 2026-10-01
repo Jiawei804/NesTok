@@ -74,5 +74,5 @@ training:
     enable_wandb: False
     use_ema: False
     seed: 42
-    max_train_steps: 250_000 # equal to 800 epochs
+    max_train_steps: 250_000  # equal to 400 epochs
     max_grad_norm: 1.0

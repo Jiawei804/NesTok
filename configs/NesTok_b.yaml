@@ -63,7 +63,7 @@ lr_scheduler:
     scheduler: "cosine"
     params:
         learning_rate: ${optimizer.params.learning_rate}
-        warmup_steps: 62_500 # 100 epochs with bsz 2048 # 62_500
+        warmup_steps: 62_500 # 100 epochs with bsz 2048  62_500
         end_lr: 1e-5
 
 training:
@@ -74,5 +74,5 @@ training:
     enable_wandb: False
     use_ema: False
     seed: 42
-    max_train_steps: 250_000 # equal to 800 epochs # 500k
+    max_train_steps: 250_000 # equal to 400 epochs
     max_grad_norm: 1.0
