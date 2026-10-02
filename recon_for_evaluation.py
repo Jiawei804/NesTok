@@ -131,14 +131,10 @@ def main(args):
         images = images.to(device, non_blocking=True)
         recon_images, _, _ = model(images, latent_tokens_len=args.token_len)
 
-        # # sample for stabilityai/sd-vae-ft-mse
-        # x = model.encode(images).latent_dist.sample()
-        # recon_images = model.decode(x).sample
-
         recon_images = torch.clamp(recon_images, 0.0, 1.0)
         recon_images = (recon_images * 255.0).round().to(torch.uint8).permute(0, 2, 3, 1).cpu().numpy()
         bsz = recon_images.shape[0]
-        # images = (images * 255.0).round().to(torch.uint8).permute(0, 2, 3, 1).cpu().numpy()
+        images = (images * 255.0).round().to(torch.uint8).permute(0, 2, 3, 1).cpu().numpy()
 
         for j in range(bsz):
             global_idx = int(global_indices[j])
