@@ -32,7 +32,7 @@ def main(args):
     config.experiment.output_dir = args.experiment_output_dir
     config.experiment.generator_checkpoint = args.experiment_generator_checkpoint
 
-    num_fid_samples = 10000
+    num_fid_samples = 50_000
     per_proc_batch_size = 125
     sample_folder_dir = config.experiment.output_dir
     seed = config.model.generator.seed 

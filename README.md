@@ -62,7 +62,7 @@ torchrun --nnodes=1 --nproc_per_node=8 sample_imagenet.py \
   --experiment_generator_checkpoint weights/NesTok-b.bin
 ```
 
-If you want to evaluate gFID w/o cfg, you can set `guidance_scale=0` and `randomize_temperature=0.95` in `configs/*.yaml` files.
+If you want to evaluate gFID w/o cfg, you can set `guidance_scale=0` and `randomize_temperature=0.95` in `configs/*.yaml` files. To sample with different `token_len`, you can set `model.generator.image_seq_len` in `configs/*.yaml` files.
 
 ### Reconstruction (ImageNet 256x256)
 Reconstruct the images with NesTok:
@@ -72,7 +72,7 @@ torchrun --nnodes=1 --nproc_per_node=8 --master_port 12345 recon_for_evaluation.
 	--batch_size 32 \
 	--ckpt_path="weights/NesTok.pth" \
 	--config="configs/NesTok_b.yaml" \  # all setting is the same
-	--token_len 32 \
+	--token_len 256 \
 
 ```
 
