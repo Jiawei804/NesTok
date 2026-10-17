@@ -23,69 +23,7 @@ One-dimensional (1D) variable-length visual tokenizers enable adaptive compressi
 
 
 
-## ✏️ Usage
 
-### Download Trained Models
-
-The trained checkpoints are hosted on Hugging Face in  🤗 [NesTok](https://huggingface.co/Jiawei804/NesTok). Place the downloaded checkpoints in the local `weights/` directory, preserving the filenames.
-
-| AR Model | Checkpoint | FID | IS | #Params |
-|-----------|---------|---------|-------|---------|
-| NesTok-B | [NesTok-b](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-b.bin) | 1.73 | 250.5 | 177M |
-| NesTok-L | [NesTok-l](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-l.bin) | 1.50 | 278.9 | 318M |
-| NesTok-XL | [NesTok-xl](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok-xl.bin) | 1.46 | 295.9 | 662M |
-
-All AR models use the tokenizer checkpoint [NesTok](https://huggingface.co/Jiawei804/NesTok/resolve/main/NesTok.pth).
-
-Install the Hugging Face CLI, log in with an account that has access to the repository, and download the checkpoints:
-
-```bash
-python -m pip install --upgrade huggingface_hub
-hf auth login
-hf download Jiawei804/NesTok NesTok.pth NesTok-b.bin NesTok-l.bin NesTok-xl.bin --local-dir weights
-```
-
-To evaluate only NesTok-B, download `NesTok.pth` and `NesTok-b.bin`.
-
-
-
-### Generation (ImageNet 256x256)
-
-You can prepare [ADM evaluation](https://github.com/openai/guided-diffusion) script first.
-
-Sampling with NesTok-B w/ cfg:
-```bash  
-torchrun --nnodes=1 --nproc_per_node=8 sample_imagenet.py \
-  --tokenizer_ckpt weights/NesTok.pth \
-  --config configs/NesTok_b.yaml \
-  --experiment_output_dir samples/NesTok_b \
-  --experiment_generator_checkpoint weights/NesTok-b.bin
-```
-
-If you want to evaluate gFID w/o cfg, you can set `guidance_scale=0` and `randomize_temperature=0.95` in `configs/*.yaml` files. To sample with different `token_len`, you can set `model.generator.image_seq_len` in `configs/*.yaml` files.
-
-### Reconstruction (ImageNet 256x256)
-Reconstruct the images with NesTok:
-```bash  
-torchrun --nnodes=1 --nproc_per_node=8 --master_port 12345 recon_for_evaluation.py \
-	--data_path="your_path/ImageNet-1K/val" \
-	--batch_size 32 \
-	--ckpt_path="weights/NesTok.pth" \
-	--config="configs/NesTok_b.yaml" \  # all setting is the same
-	--token_len 256 \
-
-```
-
-```bash 
-python	calculate_metrics.py \
-	--recon_dir "./samples/recon_samples" \
-	--orig_dir "./samples/real_samples" \
-```
-
-
-
-## Acknowledgements
-A large portion of codes in this repo is based on [One-D-Piece](https://github.com/turingmotors/One-D-Piece), [AliTok](https://github.com/ali-vilab/alitok), [MAR](https://github.com/LTH14/mar). We are grateful for these open-source research projects.
 
 
 ## Citation
