@@ -1,8 +1,6 @@
 # NesTok: Nested Self-Aligned 1D Tokenizer for Autoregressive Image Generation
 
-📎 [Nested Self-Aligned 1D Tokenizer for Autoregressive Image Generation]()
-
-Authors: Jiawei Zhang, Shuhao Liu, Rong Huang, Yuancheng Li, Zhihui Li, Xiaojun Chang, Changlin Li
+📎 [Nested Self-Aligned 1D Tokenizer for Autoregressive Image Generation](https://arxiv.org/abs/2609.36756)
 
 <p align="center">
     <img src="./imgs/visualization_imagenet.jpg" width="800"/> <br />
